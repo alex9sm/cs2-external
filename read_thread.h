@@ -4,6 +4,8 @@
 #include <winuser.h>
 #include <tlhelp32.h>
 
+#include "shared_data.h"
+
 DWORD get_pid();
 uint64_t get_module_base(HANDLE hProc, DWORD pid, const wchar_t *mod_name);
 
@@ -22,4 +24,4 @@ T read(HANDLE h, uint64_t addr, bool *ok = nullptr) {
     return success ? buffer : T{};
 }
 
-uint64_t get_entity(HANDLE h, uint64_t list, uint32_t idx);
+void read_thread_func(SharedState& state);
